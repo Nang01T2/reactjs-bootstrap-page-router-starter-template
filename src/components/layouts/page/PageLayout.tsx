@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Footer from '../../navigation/footer/Footer';
 import Header from '../../navigation/header/Header';
 
-export interface IPrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {
+export interface IPageLayout extends React.ComponentPropsWithoutRef<'div'> {
   justify?: 'items-center' | 'items-start';
 }
 
-const PrimaryLayout: React.FC<IPrimaryLayout> = ({
+const PageLayout: React.FC<IPageLayout> = ({
   children,
   justify = 'items-center',
   ...divProps
@@ -26,4 +26,8 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({
   );
 };
 
-export default PrimaryLayout;
+export default PageLayout;
+
+export const getPageLayout = (page: React.ReactElement) => (
+  <PageLayout>{page}</PageLayout>
+);

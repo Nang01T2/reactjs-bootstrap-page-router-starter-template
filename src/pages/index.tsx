@@ -2,11 +2,11 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import CatCard from '@/components/cards/cat/CatCard';
 import { mockCatCardProps } from '@/components/cards/cat/CatCard.mocks';
-import PrimaryLayout from '@/components/layouts/primary/PrimaryLayout';
-import { ReactElement } from 'react';
-import styles from '../styles/Home.module.css';
+import { getPageLayout } from '@/components/layouts/page/PageLayout';
+import { NextPageWithLayout } from '@/types';
+import { getStaticTranslations } from '@/utils/with-page-translations';
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
     <Container className="container-fluid">
       <Row className="pt-5">
@@ -31,13 +31,16 @@ export default function Home() {
           />
         </Col>
       </Row>
-      <section className={styles.main}>
+      <section>
         <CatCard {...mockCatCardProps.base} />
       </section>
     </Container>
   );
-}
-
-Home.getLayout = (page: ReactElement) => {
-  return <PrimaryLayout>{page}</PrimaryLayout>;
 };
+
+Home.getLayout = getPageLayout;
+
+export default Home;
+
+export const getStaticProps = getStaticTranslations();
+

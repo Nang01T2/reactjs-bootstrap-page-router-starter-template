@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import {
   Button,
   Container,
@@ -11,6 +12,7 @@ import {
 export interface IHeader extends React.ComponentPropsWithoutRef<'header'> {}
 
 const Header: React.FC<IHeader> = ({ className, ...headerProps }) => {
+  const { t } = useTranslation();
   return (
     <header {...headerProps} className={`${className}`}>
       <Navbar bg="light" expand="lg">
@@ -20,7 +22,7 @@ const Header: React.FC<IHeader> = ({ className, ...headerProps }) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="#link">{t('login')}</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
