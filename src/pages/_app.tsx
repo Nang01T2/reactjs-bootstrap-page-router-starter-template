@@ -1,4 +1,6 @@
 import '@/styles/globals.css';
+import '@/styles/theme.scss';
+
 import type { AppProps } from 'next/app';
 import { NextPageWithLayout } from './page';
 
